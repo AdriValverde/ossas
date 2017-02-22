@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                     1
+                     CGIS: Citas Pacientas
                 </div>
 
                 <div class="links">
