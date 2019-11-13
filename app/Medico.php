@@ -21,7 +21,7 @@ class Medico extends Model
         return $this->hasMany('App\Cita');
     }
 
-    public function getFullNameAttribute()
+    public function getNameAttribute()
     {
         return $this->name .' '.$this->surname;
     }
