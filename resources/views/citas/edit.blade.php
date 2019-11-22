@@ -13,10 +13,10 @@
                         {!! Form::model($cita, [ 'route' => ['citas.update',$cita->id], 'method'=>'PUT']) !!}
 
                         <div class="form-group">
-                            {!! Form::label('fecha_hora', 'Fecha y hora de la cita') !!}
+                            {!! Form::label('fecha_inicio', 'Fecha y hora de la cita') !!}
 
 
-                            <input type="datetime-local" id="fecha_hora" name="fecha_hora" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
+                            <input type="datetime-local" id="fecha_inicio" name="fecha_inicio" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
 
 
                         </div>
