@@ -17,7 +17,7 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Fecha</th>
-                                <th>Fin Cita</th>
+                                <th>FechaFin</th>
                                 <th>Medico</th>
                                 <th>Paciente</th>
                                 <th colspan="2">Acciones</th>
@@ -28,7 +28,7 @@
 
                                 <tr>
                                     <td>{{ $cita->fecha_inicio }}</td>
-                                    <td>{{ $cita->fecha_fin->fechaFin }}</td>
+                                    <td>{{ $cita->fechaFin }}</td>
                                     <td>{{ $cita->medico->full_name }}</td>
                                     <td>{{ $cita->paciente->full_name}}</td>
                                     <td>

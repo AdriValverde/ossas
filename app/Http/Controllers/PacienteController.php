@@ -50,7 +50,7 @@ class PacienteController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
-            'nuhsa' => 'required|regex:/^AN([0-9]{10})/|alpha_num'
+            'nuhsa' => 'required|regex:/^AN([0-9]{10})/|alpha_num|unique:pacientes'
         ]);
 
         //TODO: crear validación propia para nuhsa
@@ -73,6 +73,9 @@ class PacienteController extends Controller
     public function show($id)
     {
         // TODO: Mostrar las citas de un paciente
+        $paciente = Paciente::find($id);
+
+        return view('citas/index')->with('paciente', $paciente);
     }
 
     /**
@@ -100,7 +103,7 @@ class PacienteController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
-            'nuhsa' => 'required|nuhsa|max:255'
+            'nuhsa' => 'required|regex:/^AN([0-9]{10})/|alpha_num|unique:pacientes'
         ]);
 
         $paciente = Paciente::find($id);

@@ -18,7 +18,7 @@ class Cita extends Model
         return $this->belongsTo('App\Paciente');
     }
 
-    public function getFechaFinAttribute()
+    public function fechaFin()
     {
         return $this->fecha_inicio->addMinutes(15);
     }

@@ -110,7 +110,7 @@ class CitaController extends Controller
         $this->validate($request, [
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
-            'fecha_hora' => 'required|date|after:now',
+            'fecha_inicio' => 'required|date|after:now',
 
         ]);
         $cita = Cita::find($id);
