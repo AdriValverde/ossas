@@ -56,7 +56,6 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_inicio' => 'required|date|after:now',
-
         ]);
 
         $cita = new Cita($request->all());

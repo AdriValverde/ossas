@@ -28,7 +28,7 @@
 
                                 <tr>
                                     <td>{{ $cita->fecha_inicio }}</td>
-                                    <td>{{ $cita->fechaFin }}</td>
+                                    <td>{{ $cita->fecha_Fin }}</td>
                                     <td>{{ $cita->medico->full_name }}</td>
                                     <td>{{ $cita->paciente->full_name}}</td>
                                     <td>
