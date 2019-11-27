@@ -8,6 +8,10 @@ class Cita extends Model
 {
     protected $fillable = ['fecha_inicio', 'medico_id', 'paciente_id'];
 
+    protected $dates = [
+        'fecha_inicio', 'fecha_fin'
+    ];
+
     public function medico()
     {
         return $this->belongsTo('App\Medico');
@@ -16,10 +20,5 @@ class Cita extends Model
     public function paciente()
     {
         return $this->belongsTo('App\Paciente');
-    }
-
-    public function fechaFin()
-    {
-        return $this->fecha_inicio->addMinutes(15);
     }
 }
