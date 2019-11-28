@@ -78,6 +78,8 @@ class CitaController extends Controller
      */
     public function show($id)
     {
+
+
         //
     }
 

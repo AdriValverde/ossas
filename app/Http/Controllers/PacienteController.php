@@ -75,6 +75,14 @@ class PacienteController extends Controller
         // TODO: Mostrar las citas de un paciente
         $paciente = Paciente::find($id);
 
+        DB::table('citas')
+            ->join('pacientes', 'pacientes.id', '=', 'citas.id')
+            ->select('fecha_inicio', 'medico_id', 'paciente_id')
+            ->get();
+
+        foreach ($citas as $cita) {
+            var_dump($paciente->paciente.$id." - ".$cita->cita.$id." - ".$cita->cita.$medico.$id)
+
         return view('citas/index')->with('paciente', $paciente);
     }
 
