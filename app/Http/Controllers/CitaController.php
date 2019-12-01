@@ -56,11 +56,12 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_inicio' => 'required|date|after:now',
+            'localizacion' => 'required|string|max:255',
 
         ]);
         $cita = new Cita($request->all());
         dd($cita);
-        $cita->fecha_fin = $cita->fecha_inicio->addMinutes(15);
+        $cita->fecha_fin = $cita->fecha_inicio->
         $cita->save();
 
 
@@ -115,6 +116,7 @@ class CitaController extends Controller
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
             'fecha_inicio' => 'required|date|after:now',
+            'localizacion' => 'required|string|max:255',
 
         ]);
         $cita = Cita::find($id);

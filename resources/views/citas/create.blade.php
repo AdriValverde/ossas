@@ -30,6 +30,10 @@
                             <br>
                             {!! Form::select('paciente_id', $pacientes, ['class' => 'form-control']) !!}
                         </div>
+                        <div class="form-group">
+                            {!!Form::label('localizacion', 'Localización') !!}
+                            {!! Form::text('localizacion',null,['class'=>'form-control', 'required', 'autofocus']) !!}
+                        </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
                         {!! Form::close() !!}

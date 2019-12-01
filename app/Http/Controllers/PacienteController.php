@@ -80,8 +80,8 @@ class PacienteController extends Controller
             ->select('fecha_inicio', 'medico_id', 'paciente_id')
             ->get();
 
-        foreach ($citas as $cita) {
-            var_dump($paciente->paciente.$id." - ".$cita->cita.$id." - ".$cita->cita.$medico.$id)
+        //foreach ($cita as $cita) {
+          //  var_dump($paciente->paciente.$id." - ".$cita->cita.$id." - ".$cita->cita.$medico.$id)
 
         return view('citas/index')->with('paciente', $paciente);
     }

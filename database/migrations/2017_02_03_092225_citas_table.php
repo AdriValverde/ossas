@@ -19,6 +19,7 @@ class CitasTable extends Migration
             $table->dateTime('fecha_fin');
             $table->unsignedInteger('medico_id');
             $table->unsignedInteger('paciente_id');
+            $table->string('localizacion');
             $table->timestamps();
 
             $table->foreign('medico_id')->references('id')->on('medicos')->onDelete('cascade');
