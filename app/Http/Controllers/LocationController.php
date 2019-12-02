@@ -7,11 +7,14 @@ use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
+<<<<<<< HEAD
 
     public function __construct()
     {
         $this->middleware('auth');
     }
+=======
+>>>>>>> origin/master
     /**
      * Display a listing of the resource.
      *
@@ -19,12 +22,16 @@ class LocationController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         {
             $locations = Location::all();
 
             return view('locations/index',['locations'=>$locations]);
 
         }
+=======
+        //
+>>>>>>> origin/master
     }
 
     /**
@@ -34,7 +41,11 @@ class LocationController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         return view('locations/create');
+=======
+        //
+>>>>>>> origin/master
     }
 
     /**
@@ -45,6 +56,7 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         $this->validate($request, [
             'hospital' => 'required|max:255',
             'consulta' => 'required|max:255',
@@ -58,6 +70,9 @@ class LocationController extends Controller
         flash('Localización creada correctamente');
 
         return redirect()->route('locations.index');
+=======
+        //
+>>>>>>> origin/master
     }
 
     /**
@@ -77,11 +92,17 @@ class LocationController extends Controller
      * @param  \App\Location  $location
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function edit($id)
     {
         $location = Location::find($id);
 
         return view('locations/edit',['location'=> $location ]);
+=======
+    public function edit(Location $location)
+    {
+        //
+>>>>>>> origin/master
     }
 
     /**
@@ -91,6 +112,7 @@ class LocationController extends Controller
      * @param  \App\Location  $location
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -107,6 +129,11 @@ class LocationController extends Controller
         flash('Localización editada correctamente');
 
         return redirect()->route('locations.index');
+=======
+    public function update(Request $request, Location $location)
+    {
+        //
+>>>>>>> origin/master
     }
 
     /**
@@ -117,10 +144,14 @@ class LocationController extends Controller
      */
     public function destroy(Location $location)
     {
+<<<<<<< HEAD
         $location = Location::find($id);
         $location->delete();
         flash('Localización borrada correctamente');
 
         return redirect()->route('locations.index');
+=======
+        //
+>>>>>>> origin/master
     }
 }
