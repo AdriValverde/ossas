@@ -15,6 +15,7 @@ class AddLocationCitas extends Migration
     {
         Schema::table('citas', function (Blueprint $table) {
             $table->unsignedInteger('location_id');
+
             $table->foreign('location_id')->references('id')->on('locations');
         });
     }
