@@ -13,11 +13,11 @@ class AddLocationCitas extends Migration
      */
     public function up()
     {
-        Schema::table('citas', function (Blueprint $table) {
-            $table->unsignedInteger('location_id');
+        //Schema::table('citas', function (Blueprint $table) {
+           // $table->unsignedInteger('location_id');
 
-            $table->foreign('location_id')->references('id')->on('locations');
-        });
+           // $table->foreign('location_id')->references('id')->on('locations');
+      //  });
     }
 
     /**
