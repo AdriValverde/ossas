@@ -31,6 +31,12 @@
                             {!! Form::select('paciente_id', $pacientes, ['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group">
+                            {!!Form::label('location_id', 'Localización') !!}
+                            <br>
+                            {!! Form::select('location_id', $locations, ['class' => 'form-control']) !!}
+                        </div>
+
+                        <div class="form-group">
                             {!!Form::label('localizacion', 'Localización') !!}
                             {!! Form::text('localizacion',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>

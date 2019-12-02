@@ -82,6 +82,13 @@
                                             Citas
                                         </a>
                                     </li>
+
+                                    <li>
+                                        <a href="{{ url('/locations') }}">
+                                            Localizaciones
+                                        </a>
+                                    </li>
+
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                            onclick="event.preventDefault();

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cita extends Model
 {
-    protected $fillable = ['fecha_inicio', 'medico_id', 'paciente_id','localizacion'];
+    protected $fillable = ['fecha_inicio', 'medico_id', 'paciente_id','location_id'];
 
     protected $dates = [
         'fecha_inicio', 'fecha_fin'
@@ -20,5 +20,9 @@ class Cita extends Model
     public function paciente()
     {
         return $this->belongsTo('App\Paciente');
+    }
+    public function location()
+    {
+        return $this->belongsTo('App\Location');
     }
 }
