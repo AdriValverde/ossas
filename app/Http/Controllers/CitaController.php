@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Location;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Cita;
 use App\Medico;
@@ -40,8 +42,9 @@ class CitaController extends Controller
 
         $pacientes = Paciente::all()->pluck('full_name','id');
 
+        $locations = Location::all()->pluck('full_name','id');
 
-        return view('citas/create',['medicos'=>$medicos, 'pacientes'=>$pacientes]);
+        return view('citas/create',['medicos'=>$medicos, 'pacientes'=>$pacientes, 'locations'=>$locations]);
     }
 
     /**
@@ -55,10 +58,11 @@ class CitaController extends Controller
         $this->validate($request, [
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
+            'location_id' => 'required|exists:locations,id',
             'fecha_inicio' => 'required|date|after:now',
         ]);
-
         $cita = new Cita($request->all());
+        $cita->fecha_fin = $cita->fecha_inicio->addMinutes(15);
         $cita->save();
 
 
@@ -93,8 +97,10 @@ class CitaController extends Controller
 
         $pacientes = Paciente::all()->pluck('full_name','id');
 
+        $locations = Location::all()->pluck('full_name','id');
 
-        return view('citas/edit',['cita'=> $cita, 'medicos'=>$medicos, 'pacientes'=>$pacientes]);
+
+        return view('citas/edit',['cita'=> $cita, 'medicos'=>$medicos, 'pacientes'=>$pacientes, 'locations'=>$locations]);
     }
 
     /**
@@ -114,7 +120,7 @@ class CitaController extends Controller
         ]);
         $cita = Cita::find($id);
         $cita->fill($request->all());
-
+        $cita->fecha_fin = $cita->fecha_inicio->addMinutes(15);
         $cita->save();
 
         flash('Cita modificada correctamente');

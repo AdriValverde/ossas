@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cita extends Model
 {
-    protected $fillable = ['fecha_inicio','medico_id', 'paciente_id'];
+    protected $fillable = ['fecha_inicio','medico_id', 'paciente_id', 'location_id'];
 
     public function medico()
     {
@@ -18,8 +18,8 @@ class Cita extends Model
         return $this->belongsTo('App\Paciente');
     }
 
-    public function getfechaFinAttribute()
+    public function location()
     {
-        return $this->fecha_inicio->addMinutes(15);
+        return $this->belongsTo('App\Location');
     }
 }
