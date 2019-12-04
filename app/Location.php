@@ -17,6 +17,6 @@ class Location extends Model
     }
     public function getFullNameAttribute()
     {
-        return $this->hospital .''.$this->consulta;
+        return $this->hospital .' '.$this->consulta;
     }
 }
