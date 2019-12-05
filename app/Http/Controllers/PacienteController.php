@@ -53,7 +53,6 @@ class PacienteController extends Controller
             'nuhsa' => 'required|regex:/^AN([0-9]{10})/|alpha_num|unique:pacientes'
         ]);
 
-        //TODO: crear validación propia para nuhsa
         $paciente = new Paciente($request->all());
         $paciente->save();
 
