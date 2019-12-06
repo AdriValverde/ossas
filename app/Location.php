@@ -10,19 +10,10 @@ class Location extends Model
 
     public function citas()
     {
-<<<<<<< HEAD
         return $this->hasMany('App/Cita');
     }
     public function getFullNameAttribute()
     {
-        return $this->hospital .' '.$this->consulta;
-=======
-        return $this->hasMany('App\Cita');
-    }
-
-    public function getFullNameAttribute()
-    {
-        return $this->hospital .' Consulta:'.$this->consulta;
->>>>>>> origin/master
+        return $this->hospital . ' ' . $this->consulta;
     }
 }

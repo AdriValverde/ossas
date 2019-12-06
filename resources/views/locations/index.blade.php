@@ -26,8 +26,8 @@
 
 
                                 <tr>
-                                    <td>{{ $paciente->Hospital }}</td>
-                                    <td>{{ $paciente->Consulta }}</td>
+                                    <td>{{ $location->hospital }}</td>
+                                    <td>{{ $location->consulta }}</td>
                                     <td>
                                         {!! Form::open(['route' => ['locations.edit',$location->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}

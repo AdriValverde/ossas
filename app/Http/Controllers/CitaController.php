@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Cita;
 use App\Medico;
 use App\Paciente;
+use App\Location;
 
 
 class CitaController extends Controller
@@ -57,9 +58,8 @@ class CitaController extends Controller
         $this->validate($request, [
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
-            'fecha_inicio' => 'required|date|after:now',
             'location_id' => 'required|exists:locations,id',
-
+            'fecha_inicio' => 'required|date|after:now',
         ]);
         $cita = new Cita($request->all());
         dd($cita);
@@ -120,9 +120,8 @@ class CitaController extends Controller
         $this->validate($request, [
             'medico_id' => 'required|exists:medicos,id',
             'paciente_id' => 'required|exists:pacientes,id',
+            'location_id' => 'required|exists:locations,id',
             'fecha_inicio' => 'required|date|after:now',
-            'localizacion' => 'required|string|max:255',
-
         ]);
         $cita = Cita::find($id);
         $cita->fill($request->all());

@@ -21,7 +21,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!!Form::label('medico_id', 'Medico') !!}
+                            {!!Form::label('medico_id', 'Médico') !!}
                             <br>
                             {!! Form::select('medico_id', $medicos, ['class' => 'form-control']) !!}
                         </div>
@@ -36,10 +36,6 @@
                             {!! Form::select('location_id', $locations, ['class' => 'form-control']) !!}
                         </div>
 
-                        <div class="form-group">
-                            {!!Form::label('localizacion', 'Localización') !!}
-                            {!! Form::text('localizacion',null,['class'=>'form-control', 'required', 'autofocus']) !!}
-                        </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
                         {!! Form::close() !!}

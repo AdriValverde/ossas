@@ -17,8 +17,8 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th>Fecha</th>
-                                <th>FechaFin</th>
-                                <th>Medico</th>
+                                <th>Fecha Fin</th>
+                                <th>Médico</th>
                                 <th>Paciente</th>
                                 <th>Localización</th>
                                 <th colspan="2">Acciones</th>

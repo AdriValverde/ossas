@@ -37,9 +37,7 @@
                             <br>
                             {!! Form::select('location_id', $locations, $cita->location_id, ['class' => 'form-control']) !!}
                         </div>
-                        <div class="form-group">
-                            {!!Form::label('localizacion', 'Localización') !!}
-                        </div>
+
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
                         {!! Form::close() !!}
