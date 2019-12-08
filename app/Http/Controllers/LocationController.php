@@ -16,6 +16,7 @@ class LocationController extends Controller
     {
     $this->middleware('auth');
     }
+
     public function index()
     {
         $locations = Location::all();

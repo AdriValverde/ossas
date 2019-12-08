@@ -61,9 +61,10 @@ class CitaController extends Controller
             'location_id' => 'required|exists:locations,id',
             'fecha_inicio' => 'required|date|after:now',
         ]);
+
         $cita = new Cita($request->all());
-        dd($cita);
-        $cita->fecha_fin = $cita->fecha_inicio->
+        dd($request->all());
+        $cita->fecha_fin = $cita->fecha_inicio->addMinutes(15);
         $cita->save();
 
 

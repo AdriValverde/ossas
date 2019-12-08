@@ -50,10 +50,10 @@ class PacienteController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
-            'nuhsa' => 'required|regex:/^AN([0-9]{10})/|alpha_num|unique:pacientes'
+            'nuhsa' => 'required|regex:/^AN([0-9]{10})/|alpha_num|unique:pacientes',
+            'enfermedad_id' => 'required|exists:enfermedads,id',
         ]);
 
-        //TODO: crear validación propia para nuhsa
         $paciente = new Paciente($request->all());
         $paciente->save();
 
@@ -73,9 +73,9 @@ class PacienteController extends Controller
     public function show($id)
     {
         // TODO: Mostrar las citas de un paciente
-        /*$paciente = Paciente::find($id);
+        $paciente = Paciente::find($id);
 
-        DB::table('citas')
+        /*DB::table('citas')
             ->join('pacientes', 'pacientes.id', '=', 'citas.id')
             ->select('fecha_inicio', 'medico_id', 'paciente_id')
             ->get();
@@ -111,7 +111,8 @@ class PacienteController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
-            'nuhsa' => 'required|regex:/^AN([0-9]{10})/|alpha_num|unique:pacientes'
+            'nuhsa' => 'required|regex:/^AN([0-9]{10})/|alpha_num|unique:pacientes',
+            'enfermedad_id' => 'required|exists:enfermedads,id',
         ]);
 
         $paciente = Paciente::find($id);

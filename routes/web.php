@@ -25,6 +25,9 @@ Route::resource('citas/index', 'PacienteController@show');#Este no sé si está 
 Route::resource('citas', 'CitaController');
 Route::resource('locations', 'LocationController');
 
+Route::resource('enfermedades', 'EnfermedadController');
+
+
 
 
 

@@ -24,6 +24,11 @@
                             {!! Form::label('nuhsa', 'NUHSA del paciente') !!}
                             {!! Form::text('nuhsa',$paciente->nuhsa,['class'=>'form-control', 'required']) !!}
                         </div>
+                        <div class="form-group">
+                            {!!Form::label('enfermedad_id', 'Enfermedad del paciente') !!}
+                            <br>
+                            {!! Form::select('enfermedad_id', $enfermedades, $cita->enfermedad_id, ['class' => 'form-control']) !!}
+                        </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
                         {!! Form::close() !!}

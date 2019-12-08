@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocationTable extends Migration
+class CreateEnfermedadTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateLocationTable extends Migration
      */
     public function up()
     {
-        Schema::create('locations', function (Blueprint $table) {
+        Schema::create('enfermedads', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('hospital');
-            $table->string('consulta');
+            $table->string('nombre');
+            $table->unsignedInteger('especialidad_id');
             $table->timestamps();
+
+            $table->foreign('especialidad_id')->references('id')->on('especialidads')->onDelete('cascade');
+
         });
     }
 
@@ -28,6 +31,6 @@ class CreateLocationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locations');
+        Schema::dropIfExists('enfermedads');
     }
 }

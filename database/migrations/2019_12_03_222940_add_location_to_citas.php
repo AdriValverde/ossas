@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddLocationCitas extends Migration
+class AddLocationToCitas extends Migration
 {
     /**
      * Run the migrations.
@@ -26,6 +26,8 @@ class AddLocationCitas extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('citas', function (Blueprint $table) {
+            $table->dropColumn('location_id');
+        });
     }
 }
