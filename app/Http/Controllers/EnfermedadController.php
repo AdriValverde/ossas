@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enfermedad;
+use App\Especialidad;
 use Illuminate\Http\Request;
 
 class EnfermedadController extends Controller
@@ -31,7 +32,10 @@ class EnfermedadController extends Controller
      */
     public function create()
     {
-        return view('locations/create');
+        $especialidades = Especialidad::all()->pluck('name','id');
+
+        return view('enfermedades/create',['especialidades'=>$especialidades]);
+
     }
 
     /**
@@ -44,8 +48,8 @@ class EnfermedadController extends Controller
     {
         $this->validate($request,[
             'nombre' => 'required|max:255',
-            'especialidad_id' => 'required|exists:especialidad,id',
-            'paciente_id' => 'required|exists:paciente,id',
+            'especialidad_id' => 'required|exists:especialidads,id',
+            //'paciente_id' => 'required|exists:pacientes,id',
 
         ]);
         $enfermedad = new Enfermedad($request->all());
@@ -77,7 +81,11 @@ class EnfermedadController extends Controller
     {
         $enfermedad = Enfermedad::find($id);
 
-        return view('enfermedades/edit',['enfermedad'=> $enfermedad ]);
+        $especialidades = Especialidad::all()->pluck('name','id');
+
+        return view('enfermedades/edit',['enfermedad'=> $enfermedad, 'especialidades'=> $especialidades ]);
+
+
     }
 
     /**
@@ -91,8 +99,8 @@ class EnfermedadController extends Controller
     {
         $this->validate($request,[
             'nombre' => 'required|max:255',
-            'especialidad_id' => 'required|exists:especialidad,id',
-            'paciente_id' => 'required|exists:paciente,id',
+            'especialidad_id' => 'required|exists:especialidads,id',
+            //'paciente_id' => 'required|exists:pacientes,id',
 
         ]);
         $enfermedad = Enfermedad::find($id);

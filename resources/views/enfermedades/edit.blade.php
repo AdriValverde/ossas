@@ -5,37 +5,21 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Crear cita</div>
+                    <div class="panel-heading">Editar enfermedad</div>
 
                     <div class="panel-body">
                         @include('flash::message')
 
-                        {!! Form::model($cita, [ 'route' => ['citas.update',$cita->id], 'method'=>'PUT']) !!}
+                        {!! Form::model($enfermedad, [ 'route' => ['enfermedades.update',$enfermedad->id], 'method'=>'PUT']) !!}
 
                         <div class="form-group">
-                            {!! Form::label('fecha_inicio', 'Fecha y hora de la cita') !!}
-
-
-                            <input type="datetime-local" id="fecha_inicio" name="fecha_inicio" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
-
-
-                        </div>
-
-                        <div class="form-group">
-                            {!!Form::label('medico_id', 'Medico') !!}
-                            <br>
-                            {!! Form::select('medico_id', $medicos, $cita->medico_id, ['class' => 'form-control']) !!}
+                            {!! Form::label('nombre', 'Nombre de la enfermedad') !!}
+                            {!! Form::text('nombre',null,['class'=>'form-control', 'required', 'autofocus']) !!}
                         </div>
                         <div class="form-group">
-                            {!!Form::label('paciente_id', 'Paciente') !!}
+                            {!!Form::label('especialidad_id', 'Especialidad requerida') !!}
                             <br>
-                            {!! Form::select('paciente_id', $pacientes, $cita->paciente_id, ['class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!!Form::label('location_id', 'Localización') !!}
-                            <br>
-                            {!! Form::select('location_id', $locations, $cita->location_id, ['class' => 'form-control']) !!}
+                            {!! Form::select('especialidad_id', $especialidades, ['class' => 'form-control']) !!}
                         </div>
 
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
