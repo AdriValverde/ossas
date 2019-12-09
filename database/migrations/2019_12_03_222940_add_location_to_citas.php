@@ -26,8 +26,7 @@ class AddLocationToCitas extends Migration
      */
     public function down()
     {
-        Schema::table('citas', function (Blueprint $table) {
-            $table->dropColumn('location_id');
-        });
+        Schema::dropForeign('citas_location_id_foreign');
+
     }
 }
