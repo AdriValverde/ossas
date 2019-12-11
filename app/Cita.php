@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Cita extends Model
@@ -22,4 +23,10 @@ class Cita extends Model
     {
         return $this->belongsTo('App\Location');
     }
+    public function setFechaInicioAttribute($date)
+    {
+        if (is_string($date))
+            $this->attributes['fecha_inicio'] = Carbon::parse($date);
+    }
+
 }

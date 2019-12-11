@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enfermedad;
 use Illuminate\Http\Request;
 use App\Paciente;
 
@@ -19,8 +20,6 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        //
-
         $pacientes = Paciente::all();
 
         return view('pacientes/index',['pacientes'=>$pacientes]);
@@ -33,8 +32,9 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        //
-        return view('pacientes/create');
+        $enfermedades = Enfermedad::all()->pluck('nombre','id');
+
+        return view('pacientes/create',['enfermedades'=>$enfermedades]);
 
     }
 
@@ -46,7 +46,6 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
@@ -73,7 +72,7 @@ class PacienteController extends Controller
     public function show($id)
     {
         // TODO: Mostrar las citas de un paciente
-        $paciente = Paciente::find($id);
+        //$paciente = Paciente::find($id);
 
         /*DB::table('citas')
             ->join('pacientes', 'pacientes.id', '=', 'citas.id')
@@ -83,7 +82,7 @@ class PacienteController extends Controller
         //foreach ($cita as $cita) {
           //  var_dump($paciente->paciente.$id." - ".$cita->cita.$id." - ".$cita->cita.$medico.$id)*/
 
-        return view('citas/index')->with('paciente', $paciente);
+       // return view('citas/index')->with('paciente', $paciente);
     }
 
     /**
@@ -96,7 +95,9 @@ class PacienteController extends Controller
     {
         $paciente = Paciente::find($id);
 
-        return view('pacientes/edit',['paciente'=> $paciente ]);
+        $enfermedades = Enfermedad::all()->pluck('nombre','id');
+
+        return view('pacientes/edit',['paciente'=> $paciente, 'enfermedades'=>$enfermedades]);
     }
 
     /**

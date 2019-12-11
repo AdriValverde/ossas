@@ -63,10 +63,9 @@ class CitaController extends Controller
         ]);
 
         $cita = new Cita($request->all());
-        dd($request->all());
-        $cita->fecha_fin = $cita->fecha_inicio->addMinutes(15);
+        $cita->fecha_fin = $cita->fecha_inicio;
+        //dd($cita);
         $cita->save();
-
 
 
         flash('Cita creada correctamente');

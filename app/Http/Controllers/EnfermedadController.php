@@ -49,7 +49,6 @@ class EnfermedadController extends Controller
         $this->validate($request,[
             'nombre' => 'required|max:255',
             'especialidad_id' => 'required|exists:especialidads,id',
-            //'paciente_id' => 'required|exists:pacientes,id',
 
         ]);
         $enfermedad = new Enfermedad($request->all());
@@ -100,9 +99,9 @@ class EnfermedadController extends Controller
         $this->validate($request,[
             'nombre' => 'required|max:255',
             'especialidad_id' => 'required|exists:especialidads,id',
-            //'paciente_id' => 'required|exists:pacientes,id',
 
         ]);
+
         $enfermedad = Enfermedad::find($id);
         $enfermedad->fill($request->all());
         $enfermedad->save();
