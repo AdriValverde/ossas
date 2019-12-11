@@ -25,7 +25,7 @@ Route::resource('citas', 'CitaController');
 Route::resource('locations', 'LocationController');
 
 Route::resource('enfermedades', 'EnfermedadController');
-
+Route::resource('tratamientos', 'TratamientoController');
 
 
 

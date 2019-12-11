@@ -15,7 +15,7 @@ class AddLocationToCitas extends Migration
     {
         Schema::table('citas', function (Blueprint $table) {
             $table->unsignedInteger('location_id');
-            $table->foreign('location_id')->references('id')->on('locations');
+            $table->foreign('location_id')->references('id')->on('locations')->onDelete('cascade');
         });
     }
 
@@ -26,7 +26,9 @@ class AddLocationToCitas extends Migration
      */
     public function down()
     {
-        Schema::dropForeign('citas_location_id_foreign');
+        Schema::table('citas', function (Blueprint $table) {
+            $table->dropForeign('citas_location_id_foreign');
+        });
 
     }
 }

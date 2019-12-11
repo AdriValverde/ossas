@@ -23,6 +23,10 @@ class Cita extends Model
     {
         return $this->belongsTo('App\Location');
     }
+    public function tratamiento()
+    {
+        return $this->belongsTo('App\Tratamiento');
+    }
     public function setFechaInicioAttribute($date)
     {
         if (is_string($date))
