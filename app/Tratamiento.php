@@ -15,4 +15,8 @@ class Tratamiento extends Model
         return $this->belongsTo('App\Cita');
     }
 
+    public function medicamentos(){
+        return $this->hasMany('App\Medicamento');
+    }
+
 }
