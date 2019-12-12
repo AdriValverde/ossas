@@ -26,6 +26,8 @@ class AddMedicamentoToTratamiento extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('tratamientos', function (Blueprint $table) {
+            $table->dropForeign('tratamientos_medicamento_id_foreign');
+        });
     }
 }

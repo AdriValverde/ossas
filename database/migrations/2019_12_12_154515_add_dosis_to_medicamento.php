@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDosisToTratamiento extends Migration
+class AddDosisToMedicamento extends Migration
 {
     /**
      * Run the migrations.
@@ -26,6 +26,8 @@ class AddDosisToTratamiento extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('medicamentos', function (Blueprint $table) {
+            $table->dropForeign('medicamentos_dosis_id_foreign');
+        });
     }
 }
