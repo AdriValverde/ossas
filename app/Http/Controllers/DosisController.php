@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Tratamiento;
 use Illuminate\Http\Request;
 
-class TratamientoController extends Controller
+class DosisController extends Controller
 {
     public function __construct()
     {
@@ -18,9 +17,9 @@ class TratamientoController extends Controller
      */
     public function index()
     {
-        $tratamientos = Tratamiento::all();
+        $dosis = Dosis::all();
 
-        return view('tratamientos/index',['tratamientos'=>$tratamientos]);
+        return view('dosis/index',['dosis'=>$dosis]);
     }
 
     /**
@@ -30,7 +29,7 @@ class TratamientoController extends Controller
      */
     public function create()
     {
-        return view('tratamientos/create');
+        return view('dosis/create');
     }
 
     /**
@@ -43,18 +42,16 @@ class TratamientoController extends Controller
     {
 
         $this->validate($request, [
-
-            'fecha_inicio' => 'required|date|after:now',
-            'fecha_fin' => 'required|date|after:now',
-            'descripcion' => 'required|max:255',
+            'unidades' => 'required|max:255',
+            'instrucciones' => 'required|max:255',
         ]);
         //dd($request);
-        $tratamiento = new Tratamiento($request->all());
-        $tratamiento->save();
+        $dosis = new Dosis($request->all());
+        $dosis->save();
 
-        flash('Tratamiento creado correctamente');
+        flash('Dosis creado correctamente');
 
-        return redirect()->route('tratamientos.index');
+        return redirect()->route('dosis.index');
     }
 
     /**
@@ -63,7 +60,7 @@ class TratamientoController extends Controller
      * @param  \App\Tratamiento  $tratamiento
      * @return \Illuminate\Http\Response
      */
-    public function show(Tratamiento $tratamiento)
+    public function show(Dosis $dosis)
     {
         //
     }
@@ -76,9 +73,9 @@ class TratamientoController extends Controller
      */
     public function edit($id)
     {
-        $tratamiento = Tratamiento::find($id);
+        $dosis = Dosis::find($id);
 
-        return view('tratamientos/edit',['tratamiento'=> $tratamiento]);
+        return view('dosis/edit',['dosis'=> $dosis]);
     }
 
     /**
@@ -91,20 +88,18 @@ class TratamientoController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-
-            'fecha_inicio' => 'required|date|after:now',
-            'fecha_fin' => 'required|date|after:now',
-            'descripcion' => 'required|max:255',
+            'unidades' => 'required|max:255',
+            'instrucciones' => 'required|max:255',
         ]);
 
-        $tratamiento = Tratamiento::find($id);
-        $tratamiento->fill($request->all());
+        $dosis = Dosis::find($id);
+        $dosis->fill($request->all());
 
-        $tratamiento->save();
+        $dosis->save();
 
-        flash('Tratamiento modificado correctamente');
+        flash('Dosis modificado correctamente');
 
-        return redirect()->route('tratamientos.index');
+        return redirect()->route('dosis.index');
     }
 
     /**
@@ -115,10 +110,10 @@ class TratamientoController extends Controller
      */
     public function destroy($id)
     {
-        $tratamiento = Tratamiento::find($id);
-        $tratamiento->delete();
-        flash('Tratamiento borrado correctamente correctamente');
+        $dosis = Dosis::find($id);
+        $dosis->delete();
+        flash('Dosis borrado correctamente correctamente');
 
-        return redirect()->route('tratamientos.index');
+        return redirect()->route('dosis.index');
     }
 }

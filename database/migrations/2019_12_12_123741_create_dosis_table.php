@@ -15,13 +15,10 @@ class CreateDosisTable extends Migration
     {
         Schema::create('dosis', function (Blueprint $table) {
             $table->increments('id');
-            $table->number('unidades');
+            $table->float('unidades');
             $table->string('frecuencia');
             $table->string('instrucciones');
             $table->timestamps();
-
-            $table->foreign('medicamentos_id')->references('id')->on('medicamentos')->onDelete('cascade');
-
         });
     }
 

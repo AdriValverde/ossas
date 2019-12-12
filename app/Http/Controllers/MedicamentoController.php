@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Tratamiento;
+use App\Medicamento;
 use Illuminate\Http\Request;
 
-class TratamientoController extends Controller
+class MedicamentoController extends Controller
 {
     public function __construct()
     {
@@ -18,9 +18,9 @@ class TratamientoController extends Controller
      */
     public function index()
     {
-        $tratamientos = Tratamiento::all();
+        $medicamentos = Medicamento::all();
 
-        return view('tratamientos/index',['tratamientos'=>$tratamientos]);
+        return view('medicamentos/index',['medicamentos'=>$medicamentos]);
     }
 
     /**
@@ -30,7 +30,7 @@ class TratamientoController extends Controller
      */
     public function create()
     {
-        return view('tratamientos/create');
+        return view('medicamentos/create');
     }
 
     /**
@@ -43,18 +43,18 @@ class TratamientoController extends Controller
     {
 
         $this->validate($request, [
-
-            'fecha_inicio' => 'required|date|after:now',
-            'fecha_fin' => 'required|date|after:now',
-            'descripcion' => 'required|max:255',
+            'nombre_comun' => 'required|max:255',
+            'composicion' => 'required|max:255',
+            'presentacion' => 'required|max:255',
+            'link_vademecum' => 'required|max:255',
         ]);
         //dd($request);
-        $tratamiento = new Tratamiento($request->all());
-        $tratamiento->save();
+        $medicamento = new Medicamento($request->all());
+        $medicamento->save();
 
-        flash('Tratamiento creado correctamente');
+        flash('Medicamento creado correctamente');
 
-        return redirect()->route('tratamientos.index');
+        return redirect()->route('medicamentos.index');
     }
 
     /**
@@ -63,7 +63,7 @@ class TratamientoController extends Controller
      * @param  \App\Tratamiento  $tratamiento
      * @return \Illuminate\Http\Response
      */
-    public function show(Tratamiento $tratamiento)
+    public function show(Medicamento $medicamento)
     {
         //
     }
@@ -76,9 +76,9 @@ class TratamientoController extends Controller
      */
     public function edit($id)
     {
-        $tratamiento = Tratamiento::find($id);
+        $medicamento = Medicamento::find($id);
 
-        return view('tratamientos/edit',['tratamiento'=> $tratamiento]);
+        return view('medicamentos/edit',['medicamento'=> $medicamento]);
     }
 
     /**
@@ -91,20 +91,20 @@ class TratamientoController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-
-            'fecha_inicio' => 'required|date|after:now',
-            'fecha_fin' => 'required|date|after:now',
-            'descripcion' => 'required|max:255',
+            'nombre_comun' => 'required|max:255',
+            'composicion' => 'required|max:255',
+            'presentacion' => 'required|max:255',
+            'link_vademecum' => 'required|max:255',
         ]);
 
-        $tratamiento = Tratamiento::find($id);
-        $tratamiento->fill($request->all());
+        $medicamento = Medicamento::find($id);
+        $medicamento->fill($request->all());
 
-        $tratamiento->save();
+        $medicamento->save();
 
-        flash('Tratamiento modificado correctamente');
+        flash('Medicamento modificado correctamente');
 
-        return redirect()->route('tratamientos.index');
+        return redirect()->route('medicamento.index');
     }
 
     /**
@@ -115,10 +115,10 @@ class TratamientoController extends Controller
      */
     public function destroy($id)
     {
-        $tratamiento = Tratamiento::find($id);
-        $tratamiento->delete();
-        flash('Tratamiento borrado correctamente correctamente');
+        $medicamento = Medicamento::find($id);
+        $medicamento->delete();
+        flash('Medicamento borrado correctamente correctamente');
 
-        return redirect()->route('tratamientos.index');
+        return redirect()->route('medicamento.index');
     }
 }
