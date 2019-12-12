@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Dosis;
 
 class DosisController extends Controller
 {
@@ -42,14 +43,15 @@ class DosisController extends Controller
     {
 
         $this->validate($request, [
-            'unidades' => 'required|max:255',
+            'unidades' => 'required',
+            'frecuencia' => 'required|max:255',
             'instrucciones' => 'required|max:255',
         ]);
         //dd($request);
         $dosis = new Dosis($request->all());
         $dosis->save();
 
-        flash('Dosis creado correctamente');
+        flash('Dosis creada correctamente');
 
         return redirect()->route('dosis.index');
     }
@@ -88,7 +90,8 @@ class DosisController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'unidades' => 'required|max:255',
+            'unidades' => 'required|digits:99',
+            'frecuencia' => 'required|max:255',
             'instrucciones' => 'required|max:255',
         ]);
 
@@ -97,7 +100,7 @@ class DosisController extends Controller
 
         $dosis->save();
 
-        flash('Dosis modificado correctamente');
+        flash('Dosis modificada correctamente');
 
         return redirect()->route('dosis.index');
     }
@@ -112,7 +115,7 @@ class DosisController extends Controller
     {
         $dosis = Dosis::find($id);
         $dosis->delete();
-        flash('Dosis borrado correctamente correctamente');
+        flash('Dosis borrada correctamente');
 
         return redirect()->route('dosis.index');
     }

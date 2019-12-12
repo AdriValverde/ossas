@@ -32,5 +32,4 @@ class Cita extends Model
         if (is_string($date))
             $this->attributes['fecha_inicio'] = Carbon::parse($date);
     }
-
 }

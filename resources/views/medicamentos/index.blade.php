@@ -30,7 +30,7 @@
                                 <tr>
                                     <td>{{ $medicamento->nombre_comun }}</td>
                                     <td>{{ $medicamento->composicion }}</td>
-                                    <td>{{ $medicamento->presentacion }}</td>
+                                    <td>{{ $medicamento->presentación }}</td>
                                     <td>{{ $medicamento->link_vademecum }}</td>
                                     <td>
                                         {!! Form::open(['route' => ['medicamentos.edit',$medicamento->id], 'method' => 'get']) !!}

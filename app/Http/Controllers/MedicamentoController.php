@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dosis;
 use App\Medicamento;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,9 @@ class MedicamentoController extends Controller
      */
     public function create()
     {
-        return view('medicamentos/create');
+        $dosis = Dosis::all()->pluck('dosis_completa','id');
+
+        return view('medicamentos/create', ['dosis'=>$dosis]);
     }
 
     /**
@@ -45,12 +48,15 @@ class MedicamentoController extends Controller
         $this->validate($request, [
             'nombre_comun' => 'required|max:255',
             'composicion' => 'required|max:255',
-            'presentacion' => 'required|max:255',
+            'presentación' => 'required|max:255',
             'link_vademecum' => 'required|max:255',
         ]);
-        //dd($request);
+
         $medicamento = new Medicamento($request->all());
+        //dd($medicamento);
+
         $medicamento->save();
+
 
         flash('Medicamento creado correctamente');
 
@@ -77,8 +83,9 @@ class MedicamentoController extends Controller
     public function edit($id)
     {
         $medicamento = Medicamento::find($id);
+        $dosis = Dosis::all()->pluck('dosis_completa','id');
 
-        return view('medicamentos/edit',['medicamento'=> $medicamento]);
+        return view('medicamentos/edit',['medicamento'=> $medicamento, 'dosis'=>$dosis]);
     }
 
     /**
@@ -93,18 +100,19 @@ class MedicamentoController extends Controller
         $this->validate($request, [
             'nombre_comun' => 'required|max:255',
             'composicion' => 'required|max:255',
-            'presentacion' => 'required|max:255',
+            'presentación' => 'required|max:255',
             'link_vademecum' => 'required|max:255',
         ]);
 
         $medicamento = Medicamento::find($id);
+        //dd($medicamento);
         $medicamento->fill($request->all());
 
         $medicamento->save();
 
         flash('Medicamento modificado correctamente');
 
-        return redirect()->route('medicamento.index');
+        return redirect()->route('medicamentos.index');
     }
 
     /**
@@ -119,6 +127,6 @@ class MedicamentoController extends Controller
         $medicamento->delete();
         flash('Medicamento borrado correctamente correctamente');
 
-        return redirect()->route('medicamento.index');
+        return redirect()->route('medicamentos.index');
     }
 }

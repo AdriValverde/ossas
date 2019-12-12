@@ -103,6 +103,11 @@
                                             Medicamentos
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="{{ url('/dosis') }}">
+                                            Dosis
+                                        </a>
+                                    </li>
 
                                     <li>
                                         <a href="{{ url('/logout') }}"

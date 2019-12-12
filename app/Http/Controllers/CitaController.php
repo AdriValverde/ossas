@@ -63,8 +63,9 @@ class CitaController extends Controller
         ]);
 
         $cita = new Cita($request->all());
-        $cita->fecha_fin = $cita->fecha_inicio;
-        //dd($cita);
+        $fecha_inicio_copy = clone $cita->fecha_inicio;
+        $cita->fecha_fin = $fecha_inicio_copy->addMinutes(15);
+
         $cita->save();
 
 
@@ -125,6 +126,8 @@ class CitaController extends Controller
         ]);
         $cita = Cita::find($id);
         $cita->fill($request->all());
+        $fecha_inicio_copy = clone $cita->fecha_inicio;
+        $cita->fecha_fin = $fecha_inicio_copy->addMinutes(15);
 
         $cita->save();
 

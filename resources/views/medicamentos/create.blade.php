@@ -20,12 +20,17 @@
                             {!! Form::text('composicion',null,['class'=>'form-control', 'required']) !!}
                         </div>
                         <div class="form-group">
-                            {!! Form::label('presentacion', 'Presentación del medicamento') !!}
-                            {!! Form::text('presentacion',null,['class'=>'form-control', 'required']) !!}
+                            {!! Form::label('presentación', 'Presentación del medicamento') !!}
+                            {!! Form::text('presentación',null,['class'=>'form-control', 'required']) !!}
                         </div>
                         <div class="form-group">
                             {!! Form::label('link_vademecum', 'Link vademecum del medicamento') !!}
                             {!! Form::text('link_vademecum',null,['class'=>'form-control', 'required']) !!}
+                        </div>
+                        <div class="form-group">
+                            {!!Form::label('dosis_id', 'Dosis del medicamento') !!}
+                            <br>
+                            {!! Form::select('dosis_id', $dosis, ['class' => 'form-control']) !!}
                         </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
