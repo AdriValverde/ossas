@@ -98,6 +98,11 @@
                                             Tratamientos
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="{{ url('/medicamentos') }}">
+                                            Medicamentos
+                                        </a>
+                                    </li>
 
                                     <li>
                                         <a href="{{ url('/logout') }}"
