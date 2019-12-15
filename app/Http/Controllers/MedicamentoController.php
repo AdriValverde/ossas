@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dose;
 use App\Dosis;
 use App\Medicamento;
 use Illuminate\Http\Request;
@@ -31,9 +32,9 @@ class MedicamentoController extends Controller
      */
     public function create()
     {
-        $dosis = Dosis::all()->pluck('dosis_completa','id');
+        $doses = Dose::all()->pluck('dose_completa','id');
 
-        return view('medicamentos/create', ['dosis'=>$dosis]);
+        return view('medicamentos/create', ['doses'=>$doses]);
     }
 
     /**
@@ -83,9 +84,9 @@ class MedicamentoController extends Controller
     public function edit($id)
     {
         $medicamento = Medicamento::find($id);
-        $dosis = Dosis::all()->pluck('dosis_completa','id');
+        $doses = Dose::all()->pluck('dose_completa','id');
 
-        return view('medicamentos/edit',['medicamento'=> $medicamento, 'dosis'=>$dosis]);
+        return view('medicamentos/edit',['medicamento'=> $medicamento, 'doses'=>$doses]);
     }
 
     /**

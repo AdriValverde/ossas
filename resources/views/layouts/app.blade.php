@@ -104,10 +104,11 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('/dosis') }}">
+                                        <a href="{{ url('/doses') }}">
                                             Dosis
                                         </a>
                                     </li>
+
 
                                     <li>
                                         <a href="{{ url('/logout') }}"

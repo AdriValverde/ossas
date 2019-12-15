@@ -20,6 +20,7 @@
                                 <th>Composición</th>
                                 <th>Presentación</th>
                                 <th>Link Vademecum</th>
+                                <th>Dosis</th>
 
                                 <th colspan="2">Acciones</th>
                             </tr>
@@ -32,6 +33,7 @@
                                     <td>{{ $medicamento->composicion }}</td>
                                     <td>{{ $medicamento->presentación }}</td>
                                     <td>{{ $medicamento->link_vademecum }}</td>
+                                    <td>{{ $medicamento->doses->dose_completa }}</td>
                                     <td>
                                         {!! Form::open(['route' => ['medicamentos.edit',$medicamento->id], 'method' => 'get']) !!}
                                         {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}
