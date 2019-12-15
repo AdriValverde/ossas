@@ -32,6 +32,11 @@
                             <br>
                             {!! Form::text('descripcion',null,['class'=>'form-control', 'required']) !!}
                         </div>
+                        <div class="form-group">
+                            {!!Form::label('medicamento_id', 'Medicamento') !!}
+                            <br>
+                            {!! Form::select('medicamento_id', $medicamentos, ['class' => 'form-control', 'required']) !!}
+                        </div>
 
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 

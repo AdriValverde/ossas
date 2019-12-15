@@ -29,6 +29,6 @@ class CreateDosisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locations');
+        Schema::dropIfExists('doses');
     }
 }

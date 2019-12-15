@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tratamiento extends Model
 {
-    protected $fillable = ['fecha_inicio', 'fecha_fin', 'descripcion'];
+    protected $fillable = ['fecha_inicio', 'fecha_fin', 'descripcion', 'medicamento_id'];
 
     //protected $dates = ['fecha_inicio', 'fecha_fin'];
 
@@ -15,8 +15,8 @@ class Tratamiento extends Model
         return $this->belongsTo('App\Cita');
     }
 
-    public function medicamentos(){
-        return $this->hasMany('App\Medicamento');
+    public function medicamento(){
+        return $this->belongsTo('App\Medicamento');
     }
 
 }

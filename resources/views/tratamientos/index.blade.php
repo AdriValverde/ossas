@@ -19,6 +19,7 @@
                                 <th>Fecha Inicio</th>
                                 <th>Fecha Fin</th>
                                 <th>Descripción</th>
+                                <th>Medicamento</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
 
@@ -29,6 +30,7 @@
                                     <td>{{ $tratamiento->fecha_inicio }}</td>
                                     <td>{{ $tratamiento->fecha_fin }}</td>
                                     <td>{{ $tratamiento->descripcion }}</td>
+                                    <td>{{ $tratamiento->medicamento->nombre_comun }}</td>
 
 
                                     <td>
