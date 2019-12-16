@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Enfermedad;
+use http\Message;
 use Illuminate\Http\Request;
 use App\Cita;
 use App\Medico;
 use App\Paciente;
 use App\Location;
+use phpDocumentor\Reflection\ReconstitutingADocBlockTest;
 
 
 class CitaController extends Controller
@@ -57,7 +60,7 @@ class CitaController extends Controller
     {
         $this->validate($request, [
             'medico_id' => 'required|exists:medicos,id',
-            'paciente_id' => 'required|exists:pacientes,id',
+            'paciente_id' => 'required|exists:pacientes,id|',
             'location_id' => 'required|exists:locations,id',
             'fecha_inicio' => 'required|date|after:now',
         ]);
@@ -66,12 +69,32 @@ class CitaController extends Controller
         $fecha_inicio_copy = clone $cita->fecha_inicio;
         $cita->fecha_fin = $fecha_inicio_copy->addMinutes(15);
 
-        $cita->save();
+        $especialidadMedico=$cita->medico->especialidad;
+
+        $especialidadEnfermedad=$cita->paciente->enfermedad->especialidad;
 
 
-        flash('Cita creada correctamente');
+        if($especialidadMedico==$especialidadEnfermedad){
+            $cita->save();
+            flash('Cita creada correctamente');
+            return redirect()->route('citas.index');
 
-        return redirect()->route('citas.index');
+        }
+        else{
+            flash('El médico no ofrece la especialidad requerida: '.$especialidadEnfermedad->name.'.');
+            return redirect()->route('citas.create');
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 
     /**

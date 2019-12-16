@@ -24,6 +24,7 @@
                             {!!Form::label('medico_id', 'Médico') !!}
                             <br>
                             {!! Form::select('medico_id', $medicos, ['class' => 'form-control']) !!}
+
                         </div>
                         <div class="form-group">
                             {!!Form::label('paciente_id', 'Paciente') !!}
