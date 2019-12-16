@@ -16,7 +16,7 @@
                             {!! Form::label('fecha_inicio', 'Fecha de inicio del tratamiento') !!}
 
 
-                            <input type="datetime-local" id="fecha_inicio" name="fecha_inicio" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
+                            <input type="datetime-local" id="fecha_inicio" name="fecha_inicio" class="form-control" value="{{$tratamiento->fecha_inicio->format('Y-m-d\TH:i')}}" />
 
 
                         </div>
@@ -24,7 +24,7 @@
                             {!! Form::label('fecha_fin', 'Fecha de final del tratamiento') !!}
 
 
-                            <input type="datetime-local" id="fecha_fin" name="fecha_fin" class="form-control" value="{{Carbon\Carbon::now()->format('Y-m-d\Th:i')}}" />
+                            <input type="datetime-local" id="fecha_fin" name="fecha_fin" class="form-control" value="{{$tratamiento->fecha_inicio->format('Y-m-d\TH:i')}}" />
 
 
                         </div>
