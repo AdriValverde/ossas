@@ -28,9 +28,9 @@
                             {!! Form::text('link_vademecum',null,['class'=>'form-control', 'required']) !!}
                         </div>
                         <div class="form-group">
-                            {!!Form::label('dosis_id', 'Dosis del medicamento') !!}
+                            {!!Form::label('doses_id', 'Dosis del medicamento') !!}
                             <br>
-                            {!! Form::select('dosis_id', $dosis, ['class' => 'form-control']) !!}
+                            {!! Form::select('doses_id', $doses, ['class' => 'form-control']) !!}
                         </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 

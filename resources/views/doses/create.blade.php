@@ -1,17 +1,13 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Editar dosis</div>
-
+                    <div class="panel-heading">Crear dosis</div>
                     <div class="panel-body">
                         @include('flash::message')
-
-                        {!! Form::model($dosis, [ 'route' => ['dosis.update',$dosis->id], 'method'=>'PUT']) !!}
-
+                        {!! Form::open(['route' => 'doses.store']) !!}
                         <div class="form-group">
                             {!! Form::label('unidades', 'Unidades') !!}
                             {!! Form::number('unidades',null,['class'=>'form-control', 'required', 'autofocus']) !!}
@@ -25,7 +21,6 @@
                             {!! Form::text('instrucciones',null,['class'=>'form-control', 'required']) !!}
                         </div>
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
-
                         {!! Form::close() !!}
                     </div>
                 </div>
