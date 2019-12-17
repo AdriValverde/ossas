@@ -38,6 +38,12 @@
                             {!! Form::select('medicamento_id', $medicamentos, ['class' => 'form-control', 'required']) !!}
                         </div>
 
+                        <div class="form-group">
+                            {!!Form::label('cita_id', 'Cita') !!}
+                            <br>
+                            {!! Form::select('cita_id', $citas, ['class' => 'form-control']) !!}
+                        </div>
+
                         {!! Form::submit('Guardar',['class'=>'btn-primary btn']) !!}
 
                         {!! Form::close() !!}

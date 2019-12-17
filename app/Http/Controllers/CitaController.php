@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Enfermedad;
+use App\Tratamiento;
+use Carbon\Carbon;
 use http\Message;
 use Illuminate\Http\Request;
 use App\Cita;
 use App\Medico;
 use App\Paciente;
 use App\Location;
+use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\ReconstitutingADocBlockTest;
 
 
@@ -47,6 +50,8 @@ class CitaController extends Controller
         $locations = Location::all()->pluck('full_name','id');
 
 
+
+
         return view('citas/create',['medicos'=>$medicos, 'pacientes'=>$pacientes, 'locations'=>$locations]);
     }
 
@@ -63,16 +68,17 @@ class CitaController extends Controller
             'paciente_id' => 'required|exists:pacientes,id|',
             'location_id' => 'required|exists:locations,id',
             'fecha_inicio' => 'required|date|after:now',
+
         ]);
 
         $cita = new Cita($request->all());
+
         $fecha_inicio_copy = clone $cita->fecha_inicio;
         $cita->fecha_fin = $fecha_inicio_copy->addMinutes(15);
+        //dd($cita->fecha_fin);
 
         $especialidadMedico=$cita->medico->especialidad;
-
         $especialidadEnfermedad=$cita->paciente->enfermedad->especialidad;
-
 
         if($especialidadMedico==$especialidadEnfermedad){
             $cita->save();
@@ -84,6 +90,8 @@ class CitaController extends Controller
             flash('El médico no ofrece la especialidad requerida: '.$especialidadEnfermedad->name.'.');
             return redirect()->route('citas.create');
         }
+
+
 
 
 
@@ -121,6 +129,7 @@ class CitaController extends Controller
 
         $cita = Cita::find($id);
 
+
         $medicos = Medico::all()->pluck('full_name','id');
 
         $pacientes = Paciente::all()->pluck('full_name','id');
@@ -129,7 +138,10 @@ class CitaController extends Controller
 
 
 
-        return view('citas/edit',['cita'=> $cita, 'medicos'=>$medicos, 'pacientes'=>$pacientes,'locations'=>$locations]);
+
+
+        return view('citas/edit',['cita'=> $cita, 'medicos'=>$medicos, 'pacientes'=>$pacientes,
+            'locations'=>$locations]);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cita;
 use App\Medicamento;
 use App\Tratamiento;
 use Illuminate\Http\Request;
@@ -32,8 +33,13 @@ class TratamientoController extends Controller
     public function create()
     {
         $medicamentos = Medicamento::all()->pluck('nombre_comun','id');
+        //dd($medicamentos);
 
-        return view('tratamientos/create', ['medicamentos'=> $medicamentos]);
+
+        $citas = Cita::all()->pluck('full_cita','id');
+        //dd($citas);
+
+        return view('tratamientos/create', ['medicamentos'=> $medicamentos,'citas'=>$citas]);
     }
 
     /**
@@ -50,7 +56,8 @@ class TratamientoController extends Controller
             'fecha_inicio' => 'required|date|after:now',
             'fecha_fin' => 'required|date|after:now',
             'descripcion' => 'required|max:255',
-            'medicamento_id' => 'required|exists:medicamentos,id'
+            'medicamento_id' => 'required|exists:medicamentos,id',
+            'cita_id' => 'required|exists:citas,id'
         ]);
         //dd($request);
         $tratamiento = new Tratamiento($request->all());
@@ -81,10 +88,13 @@ class TratamientoController extends Controller
     public function edit($id)
     {
         $tratamiento = Tratamiento::find($id);
+        //dd($tratamiento->cita_id);
 
         $medicamentos = Medicamento::all()->pluck('nombre_comun','id');
 
-        return view('tratamientos/edit',['tratamiento'=> $tratamiento, 'medicamentos'=> $medicamentos]);
+        $citas = Cita::all()->pluck('full_cita','id');
+
+        return view('tratamientos/edit',['tratamiento'=> $tratamiento, 'medicamentos'=> $medicamentos, 'citas'=>$citas]);
     }
 
     /**
@@ -101,8 +111,10 @@ class TratamientoController extends Controller
             'fecha_inicio' => 'required|date|after:now',
             'fecha_fin' => 'required|date|after:now',
             'descripcion' => 'required|max:255',
-            'medicamento_id' => 'required|exists:medicamentos,id'
+            'medicamento_id' => 'required|exists:medicamentos,id',
+            'cita_id' => 'required|exists:citas,id'
         ]);
+        //dd($request);
 
         $tratamiento = Tratamiento::find($id);
         $tratamiento->fill($request->all());

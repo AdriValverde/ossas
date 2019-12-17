@@ -61,28 +61,10 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ url('/medicos') }}">
-                                            Medicos
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="{{ url('/especialidades') }}">
                                             Especialidades
                                         </a>
                                     </li>
-
-                                    <li>
-                                        <a href="{{ url('/pacientes') }}">
-                                            Pacientes
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="{{ url('/citas') }}">
-                                            Citas
-                                        </a>
-                                    </li>
-
                                     <li>
                                         <a href="{{ url('/locations') }}">
                                             Localizaciones
@@ -94,8 +76,24 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('/tratamientos') }}">
-                                            Tratamientos
+                                        <a href="{{ url('/medicos') }}">
+                                            Medicos
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ url('/pacientes') }}">
+                                            Pacientes
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/citas') }}">
+                                            Citas
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/doses') }}">
+                                            Dosis
                                         </a>
                                     </li>
                                     <li>
@@ -104,11 +102,10 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('/doses') }}">
-                                            Dosis
+                                        <a href="{{ url('/tratamientos') }}">
+                                            Tratamientos
                                         </a>
                                     </li>
-
 
                                     <li>
                                         <a href="{{ url('/logout') }}"

@@ -20,6 +20,7 @@
                                 <th>Fecha Fin</th>
                                 <th>Descripción</th>
                                 <th>Medicamento</th>
+                                <th>Cita</th>
                                 <th colspan="2">Acciones</th>
                             </tr>
 
@@ -31,6 +32,7 @@
                                     <td>{{ $tratamiento->fecha_fin }}</td>
                                     <td>{{ $tratamiento->descripcion }}</td>
                                     <td>{{ $tratamiento->medicamento->nombre_comun }}</td>
+                                    <td>{{ $tratamiento->cita->full_cita }}</td>
 
 
                                     <td>

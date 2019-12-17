@@ -32,4 +32,12 @@ class Cita extends Model
         if (is_string($date))
             $this->attributes['fecha_inicio'] = Carbon::parse($date);
     }
+    public static function locationCita($location)
+    {
+        return static::where('location_id','=', $location);
+    }
+
+    public function getFullCitaAttribute(){
+        return 'Paciente: '.$this->paciente->name.', visita al Dr. '.$this->medico->full_name.' en la fecha: '.$this->fecha_inicio->format('Y-m-d');
+    }
 }
