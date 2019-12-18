@@ -50,7 +50,7 @@ class MedicamentoController extends Controller
             'nombre_comun' => 'required|max:255',
             'composicion' => 'required|max:255',
             'presentación' => 'required|max:255',
-            'link_vademecum' => 'required|max:255',
+            'link_vademecum' => 'required|active_url',
         ]);
 
         $medicamento = new Medicamento($request->all());
@@ -102,7 +102,7 @@ class MedicamentoController extends Controller
             'nombre_comun' => 'required|max:255',
             'composicion' => 'required|max:255',
             'presentación' => 'required|max:255',
-            'link_vademecum' => 'required|max:255',
+            'link_vademecum' => 'required|active_url',
         ]);
 
         $medicamento = Medicamento::find($id);
