@@ -15,7 +15,7 @@ class dosesSeeder extends Seeder
         DB::table('doses')->insert([
             'unidades' => '1',
             'frecuencia' => 'cada 8 horas',
-            'instrucciones' => 'disolver en agua',
+            'instrucciones' => 'disolver en agua tibia',
         ]);
 
         DB::table('doses')->insert([
@@ -27,7 +27,7 @@ class dosesSeeder extends Seeder
         DB::table('doses')->insert([
             'unidades' => '2',
             'frecuencia' => 'cada 6 horas',
-            'instrucciones' => 'Seguir indicaciones prospecto',
+            'instrucciones' => 'Seguir indicaciones del prospecto',
         ]);
 
         DB::table('doses')->insert([
@@ -74,3 +74,4 @@ class dosesSeeder extends Seeder
 
     }
 }
+

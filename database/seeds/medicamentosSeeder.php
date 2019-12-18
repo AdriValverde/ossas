@@ -12,41 +12,52 @@ class medicamentosSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('doses')->insert([
-            'nombre' => 'IBUPROFENO TEVA',
-            'composión' => '600.0 mg',
-            'presemtación' => 'recubrimiento con película',
+        DB::table('medicamentos')->insert([
+            'nombre_comun' => 'IBUPROFENO TEVA',
+            'composicion' => '600.0 mg',
+            'presentación' => 'recubrimiento con película',
             'link_vademecum' => 'https://www.vademecum.es/medicamento-ibuprofeno%20teva_29382',
+            'doses_id' => '1',
         ]);
-        DB::table('doses')->insert([
-            'nombre' => 'CHIROCANE',
-            'composión' => 'Levobupivacaína hidrocloruro 2,5 mg/1 ml ',
-            'presemtación' => 'solución inyectable',
+        DB::table('medicamentos')->insert([
+            'nombre_comun' => 'CHIROCANE',
+            'composicion' => 'Levobupivacaína hidrocloruro 2,5 mg/1 ml ',
+            'presentación' => 'solución inyectable',
             'link_vademecum' => 'https://www.vademecum.es/medicamento-ibuprofeno%20teva_29382',
+            'doses_id' => '2',
+
         ]);
-        DB::table('doses')->insert([
-            'nombre' => 'BRIVIACT ',
-            'composión' => 'Briviact 10 mg/ml',
-            'presemtación' => 'solución vía oral',
+        DB::table('medicamentos')->insert([
+            'nombre_comun' => 'BRIVIACT ',
+            'composicion' => 'Briviact 10 mg/ml',
+            'presentación' => 'solución vía oral',
             'link_vademecum' => 'https://www.vademecum.es/medicamento-briviact_prospecto_1151073021',
+            'doses_id' => '3',
+
         ]);
-        DB::table('doses')->insert([
-            'nombre' => 'SUPOSITORIOS DE GLICERINA DR. TORRENTS ADULTOS ',
-            'composión' => 'GLICEROL 3,27 g',
-            'presemtación' => 'supositorio',
+        DB::table('medicamentos')->insert([
+            'nombre_comun' => 'SUPOSITORIOS DE GLICERINA DR. TORRENTS ADULTOS ',
+            'composicion' => 'GLICEROL 3,27 g',
+            'presentación' => 'supositorio',
             'link_vademecum' => 'https://www.vademecum.es/medicamento-supositorios+de+glicerina+dr.+torrents+adultos_prospecto_45647',
+            'doses_id' => '4',
+
         ]);
-        DB::table('doses')->insert([
-            'nombre' => 'REFLEX Gel',
-            'composión' => '100 mg de salicilato de metilo, 60 mg de esencia de trementina, 30 mg de alcanfor y 30 mg de mentol.',
-            'presemtación' => 'gel de uso tópico',
-            'link_vademecum' => 'https://www.vademecum.es/medicamento-reflex_prospecto_59479',
+        DB::table('medicamentos')->insert([
+            'nombre_comun' => 'FRENADOL',
+            'composicion' => '100 mg de salicilato de metilo en paracetamol.',
+            'presentación' => 'Sobre efervescente',
+            'link_vademecum' => 'https://www.vademecum.es/medicamento-frenadol+comp.+efervescente_prospecto_65457',
+            'doses_id' => '8',
+
         ]);
-        DB::table('doses')->insert([
-            'nombre' => 'REFLEX Gel',
-            'composión' => '100 mg de salicilato de metilo, 60 mg de esencia de trementina, 30 mg de alcanfor y 30 mg de mentol.',
-            'presemtación' => 'gel de uso tópico',
+        DB::table('medicamentos')->insert([
+            'nombre_comun' => 'REFLEX Gel',
+            'composicion' => '100 mg de salicilato de metilo, 60 mg de esencia de trementina, 30 mg de alcanfor y 30 mg de mentol.',
+            'presentación' => 'gel de uso tópico',
             'link_vademecum' => 'https://www.vademecum.es/medicamento-reflex_prospecto_59479',
+            'doses_id' => '5',
+
         ]);
 
 
