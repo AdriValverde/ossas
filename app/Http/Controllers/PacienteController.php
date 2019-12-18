@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enfermedad;
 use Illuminate\Http\Request;
 use App\Paciente;
+use Illuminate\Support\Facades\Input;
 
 class PacienteController extends Controller
 {
@@ -20,7 +21,12 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        $pacientes = Paciente::all();
+        if(Input::get('name')==null){
+            $pacientes = Paciente::all();
+        }
+        else{
+            $pacientes = Paciente::where('name','like', Input::get('name'))->paginate(5);
+        }
 
         return view('pacientes/index',['pacientes'=>$pacientes]);
     }

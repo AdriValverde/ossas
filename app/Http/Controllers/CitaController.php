@@ -12,6 +12,7 @@ use App\Medico;
 use App\Paciente;
 use App\Location;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use phpDocumentor\Reflection\ReconstitutingADocBlockTest;
 
 
@@ -75,32 +76,42 @@ class CitaController extends Controller
 
         $fecha_inicio_copy = clone $cita->fecha_inicio;
         $cita->fecha_fin = $fecha_inicio_copy->addMinutes(15);
-        //dd($cita->fecha_fin);
+
+        //La nueva cita no debe solicitarse en una hora que ya este asignada a ese médico.
+
+        $fecha_inicio_request=$cita->fecha_inicio;
+        $medico_cita=$cita->medico_id;
+
+        $cita_disp = Cita::where('fecha_inicio', '<=', $fecha_inicio_request)
+            ->where('fecha_fin', '>', $fecha_inicio_request)
+            ->where('medico_id', '=', $medico_cita)
+            ->exists();
+
+        //La especialidad del médico debe de ser la adecuada para atender la enfermedad del paciente
 
         $especialidadMedico=$cita->medico->especialidad;
         $especialidadEnfermedad=$cita->paciente->enfermedad->especialidad;
 
-        if($especialidadMedico==$especialidadEnfermedad){
-            $cita->save();
-            flash('Cita creada correctamente');
-            return redirect()->route('citas.index');
-
+        if(($especialidadMedico!=$especialidadEnfermedad))
+        {
+            if ($cita_disp==true){
+                return Redirect::back()->withErrors(['El médico no ofrece la especialidad requerida: '.$especialidadEnfermedad->name.'.',
+                    'La hora de la cita no esta disponible']);
+            }
+            else{
+                return Redirect::back()->withErrors('El médico no ofrece la especialidad requerida: '.$especialidadEnfermedad->name.'.');
+            }
         }
         else{
-            flash('El médico no ofrece la especialidad requerida: '.$especialidadEnfermedad->name.'.');
-            return redirect()->route('citas.create');
+            if ($cita_disp==true){
+                return Redirect::back()->withErrors('La hora de la cita no esta disponible');
+            }
+            else{
+                $cita->save();
+                flash('Cita creada correctamente');
+                return redirect()->route('citas.index');
+            }
         }
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

@@ -13,6 +13,23 @@
                         {!!   Form::submit('Crear paciente', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
+                        {!! Form::open(['route' => 'pacientes.index', 'method' => 'GET', 'class'=> 'navbar-form navbar-left pull-right']) !!}
+                        <div class="form-group">
+                            <p>
+                                {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => 'Nombre del paciente']) !!}
+                                {!! Form::submit('Buscar', ['class'=>'btn btn-default pull-right']) !!}
+                            </p>
+                            <br>
+                            <p>
+                                {!! Form::label('Seleccione la enfermedad: ', ['class' => 'pull-left']) !!}
+                                {!! Form::select('enfermedad_id', $enfermedades->nombre, ['class' => 'form-control', 'required']) !!}
+                                {!! Form::submit('Filtrar', ['class'=>'btn btn-default pull-left']) !!}
+                            </p>
+                        </div>
+
+
+                        {!! Form::close() !!}
+
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>

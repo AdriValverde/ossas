@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Redirect;
 
 class Cita extends Model
 {
@@ -31,10 +32,6 @@ class Cita extends Model
     {
         if (is_string($date))
             $this->attributes['fecha_inicio'] = Carbon::parse($date);
-    }
-    public static function locationCita($location)
-    {
-        return static::where('location_id','=', $location);
     }
 
     public function getFullCitaAttribute(){

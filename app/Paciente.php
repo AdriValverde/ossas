@@ -23,4 +23,6 @@ class Paciente extends Model
     {
         return $this->name .' '.$this->surname.' - '.$this->enfermedad->nombre.': '. $this->enfermedad->especialidad->name;
     }
+
+
 }
