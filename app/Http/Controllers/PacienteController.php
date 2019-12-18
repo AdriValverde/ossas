@@ -25,7 +25,7 @@ class PacienteController extends Controller
             $pacientes = Paciente::all();
         }
         else{
-            $pacientes = Paciente::where('name','like', Input::get('name'))->paginate(5);
+            $pacientes = Paciente::where('name','LIKE', Input::get('name'))->paginate(5);
         }
 
         return view('pacientes/index',['pacientes'=>$pacientes]);

@@ -19,12 +19,6 @@
                                 {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => 'Nombre del paciente']) !!}
                                 {!! Form::submit('Buscar', ['class'=>'btn btn-default pull-right']) !!}
                             </p>
-                            <br>
-                            <p>
-                                {!! Form::label('Seleccione la enfermedad: ', ['class' => 'pull-left']) !!}
-                                {!! Form::select('enfermedad_id', $enfermedades->nombre, ['class' => 'form-control', 'required']) !!}
-                                {!! Form::submit('Filtrar', ['class'=>'btn btn-default pull-left']) !!}
-                            </p>
                         </div>
 
 
