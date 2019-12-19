@@ -20,9 +20,15 @@ class MedicoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $medicos = Medico::all();
+        if(($request->get('surname') != null) ){
+            $medicos = Medico::where('surname','LIKE', $request->get('surname'))->paginate(10);
+        }
+        else{
+            $medicos = Medico::all();
+        }
+
 
         return view('medicos/index',['medicos'=>$medicos]);
 

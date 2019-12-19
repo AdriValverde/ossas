@@ -13,6 +13,13 @@
                         {!!   Form::submit('Crear localización', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
+                        {!! Form::open(['route' => 'locations.index', 'method' => 'GET', 'class'=> 'navbar-form navbar-left pull-right']) !!}
+                        <div class="form-group">
+                            {!! Form::text('hospital', old('hospital'), ['class' => 'form-control', 'placeholder' => 'Nombre del hospital']) !!}
+                            {!! Form::submit('Buscar', ['class'=>'btn btn-default pull-right']) !!}
+                        </div>
+                        {!! Form::close() !!}
+
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>

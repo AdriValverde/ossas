@@ -13,6 +13,13 @@
                         {!!   Form::submit('Crear enfermedad', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
+                        {!! Form::open(['route' => 'enfermedades.index', 'method' => 'GET', 'class'=> 'navbar-form navbar-left pull-right']) !!}
+                        <div class="form-group">
+                            {!! Form::text('nombre', old('nombre'), ['class' => 'form-control', 'placeholder' => 'Enfermedad']) !!}
+                            {!! Form::submit('Buscar', ['class'=>'btn btn-default pull-right']) !!}
+                        </div>
+                        {!! Form::close() !!}
+
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>

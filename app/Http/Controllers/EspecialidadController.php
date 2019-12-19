@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 
 use App\Especialidad;
@@ -20,14 +21,16 @@ class EspecialidadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if(($request->get('name') != null) ){
+            $especialidades = Especialidad::where('name','LIKE', $request->get('name'))->paginate(10);
+        }
+        else{
+            $especialidades = Especialidad::all();
+        }
 
-
-        $especialidades = Especialidad::all();
-
-        return view('especialidades/index')->with('especialidades', $especialidades);
+        return view('especialidades/index',['especialidades'=>$especialidades]);
 
 
     }

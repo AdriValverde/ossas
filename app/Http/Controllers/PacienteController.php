@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Enfermedad;
 use Illuminate\Http\Request;
 use App\Paciente;
-use Illuminate\Support\Facades\Input;
+
 
 class PacienteController extends Controller
 {
@@ -21,14 +21,22 @@ class PacienteController extends Controller
      */
     public function index(Request $request)
     {
-        $enfermedades = Enfermedad::all()->pluck('nombre','id');
-       // dd($request->get('enfermedad_id'));
-        if($request->get('name') == null){
-            $pacientes = Paciente::all();
-        }
+        $enfermedades = Enfermedad::all();
+        //dd($request->get('enfermedad_id'));
 
+        if(($request->get('name') != null) AND ($request->get('enfermedad_id')!=null)){
+
+            $pacientes = Paciente::where('enfermedad_id','=', $request->get('enfermedad_id'))
+                ->where('name','LIKE', $request->get('name'))->paginate(10);
+        }
+        elseif(($request->get('name') == null) AND ($request->get('enfermedad_id')!=null)){
+            $pacientes = Paciente::where('enfermedad_id','=', $request->get('enfermedad_id'))->paginate(10);
+        }
+        elseif(($request->get('name') != null) AND ($request->get('enfermedad_id')==null)){
+            $pacientes = Paciente::where('name','LIKE', $request->get('name'))->paginate(10);
+        }
         else{
-            $pacientes = Paciente::where('name','LIKE', Input::get('name'))->paginate(5);
+            $pacientes = Paciente::all();
         }
 
         return view('pacientes/index',['pacientes'=>$pacientes, 'enfermedades'=>$enfermedades]);

@@ -13,6 +13,14 @@
                         {!!   Form::submit('Crear medico', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
+                        {!! Form::open(['route' => 'medicos.index', 'method' => 'GET', 'class'=> 'navbar-form navbar-left pull-right']) !!}
+                        <div class="form-group">
+                            {!! Form::text('surname', old('surname'), ['class' => 'form-control', 'placeholder' => 'Apellido del médico']) !!}
+                            {!! Form::submit('Buscar', ['class'=>'btn btn-default pull-right']) !!}
+                        </div>
+
+                        {!! Form::close() !!}
+
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>

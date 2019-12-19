@@ -17,9 +17,14 @@ class LocationController extends Controller
     $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $locations = Location::all();
+        if(($request->get('hospital') != null) ){
+            $locations = Location::where('hospital','LIKE', $request->get('hospital'))->paginate(10);
+        }
+        else{
+            $locations = Location::all();
+        }
         return view('locations/index', ['locations'=>$locations]);
 
 

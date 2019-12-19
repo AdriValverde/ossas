@@ -13,6 +13,18 @@
                         {!!   Form::submit('Crear cita', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
+                        {!! Form::open(['route' => 'citas.index', 'method' => 'get']) !!}
+                        <div class="form-group">
+                            <select class="btn btn-default pull-right" name="filtro_fecha" id="filtro_fecha">
+                                <option {{Request::get('filtro_fecha') == 1 ? "selected" : ""}} value="1">Todas las citas</option>
+                                <option {{Request::get('filtro_fecha') == null ? "selected" : ""}} value="">Próximas citas</option>
+                            </select>
+                            <button type="submit" class="btn btn-default pull-right">Filtrar</button>
+
+                        </div>
+                        {!! Form::close() !!}
+
+
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>

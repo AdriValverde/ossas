@@ -15,14 +15,32 @@
                         {!! Form::close() !!}
 
                         {!! Form::open(['route' => 'pacientes.index', 'method' => 'GET', 'class'=> 'navbar-form navbar-left pull-right']) !!}
-                        <div class="form-group">
 
-                            {!! Form::select('enfermedad_id', config('options.enfermedad_id'), ['class' => 'btn btn-default', 'placeholder' => 'Seleccione una enfermedad']) !!}
-                            {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => 'Nombre del paciente']) !!}
+                        <div class="form-group">
+                            {!! Form::text('name', old('name'), ['class' => 'form-control pull-right', 'placeholder' => 'Nombre del paciente']) !!}
+                            <br><br>
+
+                            {!! Form::label('enfermedad','Filtrar por enfermedad:', ['class' => 'pull-right'])  !!}
+                            <br>
+
+                            <select class="form-control pull-right" name="enfermedad_id" id="enfermedad_id">
+                                <option value="">Todos los pacientes</option>
+                                <?php foreach ($enfermedades as $enfermedad):
+                                $enfermedad?>
+                                <option value="<?php echo $enfermedad->id; ?>"
+                                <?php if(isset($_GET['enfermedad_id']) && $_GET['enfermedad_id'] == $enfermedad->id) { echo ' selected="selected"'; } ?>>
+                                    <?php echo $enfermedad->nombre; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <br><br>
+
+
                             {!! Form::submit('Buscar', ['class'=>'btn btn-default pull-right']) !!}
 
-                        </div>
 
+
+
+                        </div>
 
                         {!! Form::close() !!}
 

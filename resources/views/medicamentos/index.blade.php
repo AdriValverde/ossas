@@ -13,6 +13,14 @@
                         {!!   Form::submit('Crear medicamento', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
+                        {!! Form::open(['route' => 'medicamentos.index', 'method' => 'GET', 'class'=> 'navbar-form navbar-left pull-right']) !!}
+                        <div class="form-group">
+                            {!! Form::text('nombre_comun', old('nombre_comun'), ['class' => 'form-control', 'placeholder' => 'Nombre común']) !!}
+                            {!! Form::submit('Buscar', ['class'=>'btn btn-default pull-right']) !!}
+                        </div>
+
+                        {!! Form::close() !!}
+
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>

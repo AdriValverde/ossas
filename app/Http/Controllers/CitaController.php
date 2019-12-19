@@ -30,9 +30,16 @@ class CitaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $citas = Cita::all();
+        if ($request->get('filtro_fecha')==null){
+            $citas = Cita::where('fecha_inicio','>',Carbon::now()->format('Y-m-d\TH:i'))->paginate(10);
+
+        }
+        else{
+            $citas = Cita::all();
+        }
+
 
         return view('citas/index',['citas'=>$citas]);
     }

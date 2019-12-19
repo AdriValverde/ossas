@@ -17,6 +17,13 @@
                         {!!   Form::submit('Borrar todas', ['class'=> 'btn btn-danger','onclick' => 'if(!confirm("¿Está seguro?"))event.preventDefault();'])!!}
                         {!! Form::close() !!}
 
+                        {!! Form::open(['route' => 'especialidades.index', 'method' => 'GET', 'class'=> 'navbar-form navbar-left pull-right']) !!}
+                        <div class="form-group">
+                            {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => 'Nombre de la especialidad']) !!}
+                            {!! Form::submit('Buscar', ['class'=>'btn btn-default pull-right']) !!}
+                        </div>
+                        {!! Form::close() !!}
+
                         <br><br>
                         <table class="table table-striped table-bordered">
                             <tr>

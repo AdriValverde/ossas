@@ -18,9 +18,14 @@ class MedicamentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $medicamentos = Medicamento::all();
+        if(($request->get('nombre_comun') != null) ){
+            $medicamentos = Medicamento::where('nombre_comun','LIKE', $request->get('nombre_comun'))->paginate(10);
+        }
+        else{
+            $medicamentos = Medicamento::all();
+        }
 
         return view('medicamentos/index',['medicamentos'=>$medicamentos]);
     }

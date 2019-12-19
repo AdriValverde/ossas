@@ -19,9 +19,15 @@ class EnfermedadController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $enfermedades = Enfermedad::all();
+        if(($request->get('nombre') != null) ){
+            $enfermedades = Enfermedad::where('nombre','LIKE', $request->get('nombre'))->paginate(10);
+        }
+        else{
+            $enfermedades = Enfermedad::all();
+        }
+
         return view('enfermedades/index', ['enfermedades'=>$enfermedades]);
     }
 
