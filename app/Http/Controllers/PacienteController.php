@@ -19,16 +19,19 @@ class PacienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if(Input::get('name')==null){
+        $enfermedades = Enfermedad::all()->pluck('nombre','id');
+       // dd($request->get('enfermedad_id'));
+        if($request->get('name') == null){
             $pacientes = Paciente::all();
         }
+
         else{
             $pacientes = Paciente::where('name','LIKE', Input::get('name'))->paginate(5);
         }
 
-        return view('pacientes/index',['pacientes'=>$pacientes]);
+        return view('pacientes/index',['pacientes'=>$pacientes, 'enfermedades'=>$enfermedades]);
     }
 
     /**

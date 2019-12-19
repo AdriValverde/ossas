@@ -8,17 +8,19 @@
                     <div class="panel-heading">Pacientes</div>
 
                     <div class="panel-body">
+
                         @include('flash::message')
                         {!! Form::open(['route' => 'pacientes.create', 'method' => 'get']) !!}
-                        {!!   Form::submit('Crear paciente', ['class'=> 'btn btn-primary'])!!}
+                        {!! Form::submit('Crear paciente', ['class'=> 'btn btn-primary'])!!}
                         {!! Form::close() !!}
 
                         {!! Form::open(['route' => 'pacientes.index', 'method' => 'GET', 'class'=> 'navbar-form navbar-left pull-right']) !!}
                         <div class="form-group">
-                            <p>
-                                {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => 'Nombre del paciente']) !!}
-                                {!! Form::submit('Buscar', ['class'=>'btn btn-default pull-right']) !!}
-                            </p>
+
+                            {!! Form::select('enfermedad_id', config('options.enfermedad_id'), ['class' => 'btn btn-default', 'placeholder' => 'Seleccione una enfermedad']) !!}
+                            {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => 'Nombre del paciente']) !!}
+                            {!! Form::submit('Buscar', ['class'=>'btn btn-default pull-right']) !!}
+
                         </div>
 
 
@@ -45,12 +47,12 @@
                                     <td>{{ $paciente->enfermedad->nombre }}</td>
                                     <td>
                                         {!! Form::open(['route' => ['pacientes.edit',$paciente->id], 'method' => 'get']) !!}
-                                        {!!   Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}
+                                        {!! Form::submit('Editar', ['class'=> 'btn btn-warning'])!!}
                                         {!! Form::close() !!}
                                     </td>
                                     <td>
                                         {!! Form::open(['route' => ['pacientes.destroy',$paciente->id], 'method' => 'delete']) !!}
-                                        {!!   Form::submit('Borrar', ['class'=> 'btn btn-danger' ,'onclick' => 'if(!confirm("¿Está seguro?"))event.preventDefault();'])!!}
+                                        {!! Form::submit('Borrar', ['class'=> 'btn btn-danger' ,'onclick' => 'if(!confirm("¿Está seguro?"))event.preventDefault();'])!!}
                                         {!! Form::close() !!}
 
                                     </td>
