@@ -56,11 +56,12 @@ class TratamientoController extends Controller
             'fecha_inicio' => 'required|date|after:now',
             'fecha_fin' => 'required|date|after:now',
             'descripcion' => 'required|max:255',
-            'medicamento_id' => 'required|exists:medicamentos,id',
+            'medicamento_id' => 'nullable|exists:medicamentos,id',
             'cita_id' => 'required|exists:citas,id'
         ]);
-        //dd($request);
+
         $tratamiento = new Tratamiento($request->all());
+
         $tratamiento->save();
 
         flash('Tratamiento creado correctamente');
@@ -111,12 +112,14 @@ class TratamientoController extends Controller
             'fecha_inicio' => 'required|date|after:now',
             'fecha_fin' => 'required|date|after:now',
             'descripcion' => 'required|max:255',
-            'medicamento_id' => 'required|exists:medicamentos,id',
+            'medicamento_id' => 'nullable|exists:medicamentos,id',
             'cita_id' => 'required|exists:citas,id'
         ]);
         //dd($request);
 
+
         $tratamiento = Tratamiento::find($id);
+
         $tratamiento->fill($request->all());
 
         $tratamiento->save();

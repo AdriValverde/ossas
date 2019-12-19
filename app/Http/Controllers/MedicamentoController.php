@@ -21,7 +21,7 @@ class MedicamentoController extends Controller
     public function index(Request $request)
     {
         if(($request->get('nombre_comun') != null) ){
-            $medicamentos = Medicamento::where('nombre_comun','LIKE', $request->get('nombre_comun'))->paginate(10);
+            $medicamentos = Medicamento::where('nombre_comun','LIKE', '%'.$request->get('nombre_comun').'%')->paginate(10);
         }
         else{
             $medicamentos = Medicamento::all();

@@ -37,7 +37,9 @@
                         <div class="form-group">
                             {!!Form::label('medicamento_id', 'Medicamento') !!}
                             <br>
-                            {!! Form::select('medicamento_id', $medicamentos, $tratamiento->medicamento_id, ['class' => 'form-control', 'required']) !!}
+                            {!! Form::select('medicamento_id', $medicamentos, $tratamiento->medicamento_id,
+                            ['class' => 'form-control', 'placeholder'=>'Ningún medicamento', value("")]) !!}
+
                         </div>
 
                         <div class="form-group">
