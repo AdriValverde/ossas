@@ -8,6 +8,7 @@
                     <div class="panel-heading">Medicamentos</div>
 
                     <div class="panel-body">
+
                         @include('flash::message')
                         {!! Form::open(['route' => 'medicamentos.create', 'method' => 'get']) !!}
                         {!!   Form::submit('Crear medicamento', ['class'=> 'btn btn-primary'])!!}
@@ -21,8 +22,8 @@
 
                         {!! Form::close() !!}
 
-                        <br><br>
-                        <table class="table table-striped table-bordered">
+
+                        <table class="table table-striped table-bordered "  >
                             <tr>
                                 <th>Nombre</th>
                                 <th>Composición</th>
@@ -34,7 +35,6 @@
                             </tr>
 
                             @foreach ($medicamentos as $medicamento)
-
 
                                 <tr>
                                     <td>{{ $medicamento->nombre_comun }}</td>
@@ -60,4 +60,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection
