@@ -31,7 +31,7 @@
                                     <td>{{ $tratamiento->fecha_inicio->format('Y-m-d') }}</td>
                                     <td>{{ $tratamiento->fecha_fin->format('Y-m-d') }}</td>
                                     <td>{{ $tratamiento->descripcion }}</td>
-                                    <td>{{ $tratamiento->medicamento->nombre_comun }}</td>
+                                    <td>{{ $tratamiento->medicamento->nombre_comun or null }}</td>
                                     <td>{{ $tratamiento->cita->full_cita }}</td>
 
 

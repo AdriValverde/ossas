@@ -35,7 +35,15 @@
                         <div class="form-group">
                             {!!Form::label('medicamento_id', 'Medicamento') !!}
                             <br>
-                            {!! Form::select('medicamento_id', $medicamentos, ['class' => 'form-control', 'required']) !!}
+                            <select class="form-control pull-right" name="medicamento_id" id="medicamento_id">
+                                <option {{Request::get('medicamento_id') === null ? "selected" : ""}} value="">Ningún medicamento</option>
+                                <?php foreach ($medicamentos as $medicamento):
+                                $medicamento?>
+                                <option value="<?php echo $medicamento->id; ?>">
+                                    <?php echo $medicamento->nombre_comun; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+
                         </div>
 
                         <div class="form-group">

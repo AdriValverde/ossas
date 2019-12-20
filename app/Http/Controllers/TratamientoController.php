@@ -21,8 +21,9 @@ class TratamientoController extends Controller
     public function index()
     {
         $tratamientos = Tratamiento::all();
+        $medicamentos = Medicamento::all();
 
-        return view('tratamientos/index',['tratamientos'=>$tratamientos]);
+        return view('tratamientos/index',['tratamientos'=>$tratamientos,'medicamentos'=>$medicamentos]);
     }
 
     /**
@@ -32,14 +33,14 @@ class TratamientoController extends Controller
      */
     public function create()
     {
-        $medicamentos = Medicamento::all()->pluck('nombre_comun','id');
+        $medicamentos = Medicamento::all();
         //dd($medicamentos);
-
 
         $citas = Cita::all()->pluck('full_cita','id');
         //dd($citas);
+        $tratamiento = Tratamiento::all();
 
-        return view('tratamientos/create', ['medicamentos'=> $medicamentos,'citas'=>$citas]);
+        return view('tratamientos/create', ['medicamentos'=> $medicamentos,'citas'=>$citas,'tratamientos'=>$tratamiento]);
     }
 
     /**
@@ -50,19 +51,27 @@ class TratamientoController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->get('medicamento_id') === "") {
+            $request['medicamento_id'] = null; // or 'NULL' for SQL
+            //dd($request->get('medicamento_id'));
+        }
 
         $this->validate($request, [
 
             'fecha_inicio' => 'required|date|after:now',
             'fecha_fin' => 'required|date|after:now',
             'descripcion' => 'required|max:255',
-            'medicamento_id' => 'nullable|exists:medicamentos,id',
+            'medicamento_id' => 'nullable',
             'cita_id' => 'required|exists:citas,id'
         ]);
+        //dd($request->get('medicamento_id'));
+
 
         $tratamiento = new Tratamiento($request->all());
 
+
         $tratamiento->save();
+
 
         flash('Tratamiento creado correctamente');
 
@@ -91,7 +100,7 @@ class TratamientoController extends Controller
         $tratamiento = Tratamiento::find($id);
         //dd($tratamiento->cita_id);
 
-        $medicamentos = Medicamento::all()->pluck('nombre_comun','id');
+        $medicamentos = Medicamento::all();
 
         $citas = Cita::all()->pluck('full_cita','id');
 
@@ -107,12 +116,16 @@ class TratamientoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if ($request->get('medicamento_id') === "") {
+            $request['medicamento_id'] = null; // or 'NULL' for SQL
+            //dd($request->get('medicamento_id'));
+        }
         $this->validate($request, [
 
             'fecha_inicio' => 'required|date|after:now',
             'fecha_fin' => 'required|date|after:now',
             'descripcion' => 'required|max:255',
-            'medicamento_id' => 'nullable|exists:medicamentos,id',
+            'medicamento_id' => 'nullable',
             'cita_id' => 'required|exists:citas,id'
         ]);
         //dd($request);

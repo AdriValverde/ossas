@@ -35,14 +35,31 @@
                         </div>
 
                         <div class="form-group">
+
                             {!!Form::label('medicamento_id', 'Medicamento') !!}
-                            <br>
-                            {!! Form::select('medicamento_id', $medicamentos, $tratamiento->medicamento_id,
-                            ['class' => 'form-control', 'placeholder'=>'Ningún medicamento', value("")]) !!}
+                            {!! Form::label('medicamento_id', ' -- Recetado anteriormente:  ', ['class' => 'awesome']); !!}
+                            {!! Form::label('medicamento_id', $tratamiento->medicamento->nombre_comun); !!}
+
+
+                            <div class=" btn-group ">
+
+                                <select class="form-control pull-right" name="medicamento_id" id="medicamento_id">
+                                    <option {{Request::get('medicamento_id') === null ? "selected" : ""}} value="">Ningún medicamento</option>
+                                    <?php foreach ($medicamentos as $medicamento):
+                                    $medicamento?>
+                                    <option {{Request::get('medicamento_id') == $tratamiento->medicamento_id ? "selected" : ""}} value="<?php echo $medicamento->id; ?>">
+                                        <?php echo $medicamento->nombre_comun; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+
+
+                            </div>
+
 
                         </div>
 
                         <div class="form-group">
+
                             {!!Form::label('cita_id', 'Cita') !!}
                             <br>
                             {!! Form::select('cita_id', $citas, $tratamiento->cita_id, ['class' => 'form-control', 'required']) !!}
