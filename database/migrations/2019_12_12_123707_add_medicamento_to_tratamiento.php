@@ -16,7 +16,7 @@ class AddMedicamentoToTratamiento extends Migration
     {
         Schema::table('tratamientos', function (Blueprint $table) {
             $table->unsignedInteger('medicamento_id')->nullable();
-            $table->foreign('medicamento_id')->references('id')->on('medicamentos');
+            $table->foreign('medicamento_id')->references('id')->on('medicamentos')->onDelete('cascade');
         });
 
     }

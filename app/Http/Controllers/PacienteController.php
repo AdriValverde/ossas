@@ -22,7 +22,6 @@ class PacienteController extends Controller
     public function index(Request $request)
     {
         $enfermedades = Enfermedad::all();
-        //dd($request->get('enfermedad_id'));
 
         if(($request->get('name') != null) AND ($request->get('enfermedad_id')!=null)){
 
@@ -88,7 +87,6 @@ class PacienteController extends Controller
      */
     public function show($id)
     {
-        // TODO: Mostrar las citas de un paciente
         $paciente = Paciente::find($id);
         return view('citas/index')->with('paciente', $paciente);
     }
